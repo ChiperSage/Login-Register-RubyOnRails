@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard</title>
+</head>
+<body>
+    <h1>Welcome to Your Dashboard</h1>
+    <p>You are successfully logged in. Here, you can manage your profile and other settings.</p>
+
+    <%# <a href="/auth/logout" style="color: red;">Logout</a> %>
+
+    <!-- Logout form using DELETE method -->
+    <form action="/auth/logout" method="post">
+        <!-- Rails uses this hidden input to simulate DELETE method -->
+        <input type="hidden" name="_method" value="delete">
+        <!-- Authenticity token for security in Rails -->
+        <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+        <button type="submit" style="color: red;">Logout</button>
+    </form>
+</body>
+</html>
