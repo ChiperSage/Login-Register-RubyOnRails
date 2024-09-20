@@ -1,12 +1,19 @@
 Rails.application.routes.draw do
-  root 'users#index'
 
-  get 'login', to: 'sessions#new'
-  post 'login', to: 'sessions#create'
-  delete 'logout', to: 'sessions#destroy'
+  get 'auth/register', to: 'auth#register', as: 'register'
+  post 'auth/register', to: 'auth#add_user', as: 'add_user'
 
-  get 'signup', to: 'registrations#new'
-  post 'signup', to: 'registrations#create'
+  get 'auth/login', to: 'auth#login', as: 'login'
+  post 'auth/login', to: 'auth#authenticate', as: 'authenticate'
 
-  resources :users, except: [:new, :create]
+  delete 'auth/logout', to: 'auth#logout'
+
+  get 'dashboard', to: 'dashboard#dashboard'
+  get 'dashboard/index', to: 'dashboard#dashboard'
+
+  # Root route
+  root 'welcome#index'
+
+  get 'welcome/check_db', to: 'welcome#check_db'
+
 end

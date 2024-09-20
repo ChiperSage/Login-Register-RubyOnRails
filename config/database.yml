@@ -1,0 +1,21 @@
+default: &default
+  adapter: mysql2            # Specifies the MySQL adapter
+  encoding: utf8mb4           # Character set encoding
+  pool: 5
+  username: root              # MySQL username
+  password:                   # MySQL password (currently blank)
+  host: 127.0.0.1             # Database is hosted on localhost
+  port: 3300                  # MySQL default port
+  timeout: 5000               # Connection timeout in milliseconds
+
+development:
+  <<: *default                # Inherits settings from the "default" configuration
+  database: ruby_auth
+
+test:
+  <<: *default                # Inherits settings from the "default" configuration
+  database: ruby_auth         # Database name for test environment
+
+production:
+  <<: *default                # Inherits settings from the "default" configuration
+  database: ruby_auth         # Database name for production
